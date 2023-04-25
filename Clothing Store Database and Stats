@@ -1,0 +1,25 @@
+--create a clothing store database
+
+CREATE TABLE clothing_store (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, color TEXT, size INTEGER);
+
+INSERT INTO clothing_store VALUES (1, "tshirt", 10,"white", 3);
+INSERT INTO clothing_store VALUES (2, "jeans", 20,"blue", 6);
+INSERT INTO clothing_store VALUES (3, "long sleeve shirt",15, "pink", 4);
+INSERT INTO clothing_store VALUES (4, "sweatpants", 12,"gray",3);
+INSERT INTO clothing_store VALUES (5, "sweatshirt", 20, "maroon",5);
+INSERT INTO clothing_store VALUES (6, "tank top",15, "white",3);
+INSERT INTO clothing_store VALUES (7, "cargo pants",35,"beige",7);
+INSERT INTO clothing_store VALUES (8, "sherpa coat",40,"cream",5);
+INSERT INTO clothing_store VALUES (9, "sporta bra", 15, "purple", 6);
+INSERT INTO clothing_store VALUES (10, "socks", 5,"black",0);
+INSERT INTO clothing_store VALUES (11, "crop top", 15,"red", 4);
+INSERT INTO clothing_store VALUES (12, "leggings",10,"black",3);
+INSERT INTO clothing_store VALUES (13, "headband",8,"navy",0);
+INSERT INTO clothing_store VALUES (14, "beanie", 10,"pink",0);
+INSERT INTO clothing_store VALUES (15, "pajama pants",15,"stripes",6);
+
+--display the database order by price
+SELECT id,item,color,price,size FROM clothing_store ORDER BY price;
+
+--which items are greater than $10 in price?
+SELECT id,item,color,price,size FROM clothing_store WHERE price > 10;
