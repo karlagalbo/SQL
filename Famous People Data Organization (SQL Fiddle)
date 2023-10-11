@@ -1,0 +1,96 @@
+# This project reveals and organizes information about famous singers.
+
+# The project was written using the PostgreSQL dialect and utilized personally inputted data.
+
+# The following is the content that the data is pulled from.
+
+CREATE TABLE Famous_Singers (
+  id INTEGER PRIMARY KEY, name TEXT, age INTEGER, genre TEXT, home_state TEXT, gender TEXT);
+
+  INSERT into Famous_Singers VALUES (1, 'Gwen Stefani', 54,'Pop', 'california', 'female');
+
+  INSERT into Famous_Singers VALUES (2, 'Reba McEntire', 68, 'Country', 'oklahoma', 'female');
+
+  INSERT into Famous_Singers VALUES (3, 'Dolly Parton', 77, 'Country', 'tennessee', 'female');
+
+  INSERT into Famous_Singers VALUES (4, 'Selena Gomez', 31, 'Pop', 'texas', 'female');
+
+  INSERT into Famous_Singers VALUES (5, 'Ed Sheeran', 32, 'Pop', 'west yorkshire', 'male');
+
+  INSERT into Famous_Singers VALUES (6, 'Taylor Swift', 33, 'Pop', 'pennsylvania', 'female');
+
+  INSERT into Famous_Singers VALUES (7, 'Frank Ocean', 35, 'R&B', 'california', 'male');
+
+  INSERT into Famous_Singers VALUES (8, 'Chris Brown', 34, 'R&B', 'virginia', 'male');
+
+  INSERT into Famous_Singers VALUES (9, 'Justin Bieber', 29, 'Pop', 'london', 'male');
+
+  INSERT into Famous_Singers VALUES (10, 'Ariana Grande', 30, 'Pop', 'florida', 'female');
+
+  INSERT into Famous_Singers VALUES (11, 'Michael Jackson', 50, 'Pop', 'indiana', 'male');
+
+  INSERT into Famous_Singers VALUES (12, 'Prince', 57, 'Pop', 'minnesota', 'male');
+
+  INSERT into Famous_Singers VALUES (13, 'Drake', 36, 'R&B', 'toronto', 'male');
+
+  INSERT into Famous_Singers VALUES (14, 'Snoop Dogg', 51, 'R&B', 'california', 'male');
+
+  INSERT into Famous_Singers VALUES (15, 'Kanye West', 46, 'R&B', 'georgia', 'female');
+
+# Next, I'm creating a secondary table to join relevent information based on a shared id, in this case legal names to nicknames.
+
+SELECT * FROM Famous_Singers;
+
+CREATE TABLE Famous_Nicknames (id INTEGER PRIMARY KEY, nickname TEXT);
+
+  INSERT into Famous_Nicknames VALUES (1, 'Gwenosaur');
+
+  INSERT into Famous_Nicknames VALUES (2, 'Queen of Country');
+
+  INSERT into Famous_Nicknames VALUES (3, 'The Southern Belle');
+
+  INSERT into Famous_Nicknames VALUES (4, 'Sel');
+
+  INSERT into Famous_Nicknames VALUES (5, 'Teddy');
+  
+  INSERT into Famous_Nicknames VALUES (6, 'T-Swizzy');
+
+  INSERT into Famous_Nicknames VALUES (7, 'Lonny');
+
+  INSERT into Famous_Nicknames VALUES (8, 'Breezy');
+
+  INSERT into Famous_Nicknames VALUES (9, 'Biebs');
+
+  INSERT into Famous_Nicknames VALUES (10, 'Ari');
+
+  INSERT into Famous_Nicknames VALUES (11, 'King of Pop');
+
+  INSERT into Famous_Nicknames VALUES (12, 'Purple Majesty');
+
+  INSERT into Famous_Nicknames VALUES (13, 'Drizzy');
+
+  INSERT into Famous_Nicknames VALUES (14, 'Doggfather');
+
+  INSERT into Famous_Nicknames VALUES (15, 'Yeezy');
+
+
+# The following SQL was written to answer specific questions based on the given topic.
+
+
+#1. Which singers are under 50 years old in age?
+SELECT age,name AS Singers_Under_50 FROM Famous_Singers WHERE age < 50 ORDER BY age DESC;
+
+#2. Which singers originate from the East Coast?
+SELECT name,home_state AS East_Coast_Singers FROM Famous_Singers WHERE home_state = 'pennsylvania' OR home_state = 'virginia';
+
+#3. Which singers originate from the West Coast?
+SELECT name,home_state AS West_Coast_Singers FROM Famous_Singers WHERE home_state = 'california';
+
+#4. Which singers originate from the South?
+SELECT name,home_state AS Southern_Singers FROM Famous_Singers WHERE home_state = 'texas' OR home_state = 'tennessee' OR home_state = 'oklahoma' OR home_state = 'florida' OR home_state = 'georgia';
+
+#5. Which singers originate from counties outside of the United States?
+SELECT name,home_state AS Singers_From_Other_Countries FROM Famous_Singers WHERE home_state = 'london' OR home_state = 'west yorkshire' OR home_state = 'toronto';
+
+#6. Match up legal names of singers to their given nicknames based off of a shared id.
+SELECT Famous_Singers.name,Famous_Nicknames.nickname FROM Famous_Singers JOIN Famous_Nicknames ON Famous_Singers.id=Famous_Nicknames.id;
